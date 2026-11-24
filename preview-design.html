@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Editor Portfolio — Vertical Reels & Black/Orange Theme</title>
+  
+  <!-- Modern Professional Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            dark: {
+              950: '#060608',
+              900: '#0a0a0e',
+              850: '#0f0f14',
+              800: '#14141c',
+              700: '#1e1e28',
+              600: '#2a2a38',
+            },
+            brand: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#ff5500', // Primary Vibrant Orange
+              600: '#ea4a00',
+              700: '#c23900',
+              accent: '#ff7722',
+              glow: 'rgba(255, 85, 0, 0.35)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #070709;
+      color: #e4e4e7;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.03em;
+    }
+    
+    /* Background grid & ambient orange glows */
+    .bg-grid {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+    
+    .glow-orange {
+      background: radial-gradient(circle, rgba(255, 85, 0, 0.16) 0%, rgba(255, 85, 0, 0) 70%);
+    }
+
+    .glow-orange-sm {
+      background: radial-gradient(circle, rgba(255, 85, 0, 0.22) 0%, rgba(255, 85, 0, 0) 70%);
+    }
+
+    .card-glass {
+      background: rgba(18, 18, 24, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card-glass:hover {
+      border-color: rgba(255, 85, 0, 0.45);
+      box-shadow: 0 12px 36px -10px rgba(255, 85, 0, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .orange-gradient-text {
+      background: linear-gradient(135deg, #ffffff 25%, #ff8833 75%, #ff5500 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .orange-tag {
+      background: rgba(255, 85, 0, 0.1);
+      border: 1px solid rgba(255, 85, 0, 0.25);
+      color: #ff8833;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #272732;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff5500;
+    }
+  </style>
+</head>
+<body class="bg-dark-950 text-zinc-300 relative selection:bg-brand-500 selection:text-white">
+
+  <!-- Ambient Light Orbs -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[950px] h-[550px] glow-orange pointer-events-none -z-10 blur-3xl"></div>
+  <div class="fixed top-[45%] right-0 w-[600px] h-[600px] glow-orange-sm pointer-events-none -z-10 blur-3xl opacity-50"></div>
+  <div class="fixed bottom-0 left-0 w-[500px] h-[500px] glow-orange-sm pointer-events-none -z-10 blur-3xl opacity-40"></div>
+
+  <!-- Background Subtle Grid -->
+  <div class="fixed inset-0 bg-grid pointer-events-none -z-20"></div>
+
+  <!-- ==================== NAVIGATION BAR (UPDATED: NO TESTIMONIALS / NO PRICING) ==================== -->
+  <header class="sticky top-4 z-50 px-4 max-w-5xl mx-auto">
+    <nav class="card-glass rounded-full px-6 py-3.5 flex items-center justify-between border border-white/10 shadow-2xl">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-brand-500 to-amber-500 flex items-center justify-center font-display font-bold text-black text-base shadow-lg shadow-brand-500/30 group-hover:scale-105 transition">
+          <svg class="w-4 h-4 text-black fill-current" viewBox="0 0 24 24">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-white text-base tracking-tight leading-none group-hover:text-brand-400 transition">Video Editor</span>
+          <span class="text-[10px] text-zinc-400 font-medium tracking-wider uppercase mt-0.5">Vertical Video & Short-Form</span>
+        </div>
+      </a>
+
+      <!-- Clean Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-300">
+        <a href="#work" class="hover:text-brand-400 transition">Work</a>
+        <a href="#services" class="hover:text-brand-400 transition">Services</a>
+        <a href="#skills" class="hover:text-brand-400 transition">Skills</a>
+        <a href="#faq" class="hover:text-brand-400 transition">FAQ</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="relative group overflow-hidden px-5 py-2.5 rounded-full bg-brand-500 hover:bg-brand-600 text-black font-semibold text-xs tracking-wide uppercase transition shadow-lg shadow-brand-500/25 flex items-center gap-2">
+          <span>Hire me</span>
+          <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ==================== HERO SECTION (UPDATED: NO SHOWREEL) ==================== -->
+  <section class="relative pt-24 pb-20 md:pt-32 md:pb-28 px-4 max-w-5xl mx-auto text-center">
+    <!-- Top Pill Badge -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full orange-tag text-xs font-semibold tracking-wide uppercase mb-8 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+      <span>Worked with 50+ Top Creators & Brands</span>
+    </div>
+
+    <!-- Main Headline with Professional Font -->
+    <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl text-white tracking-tight leading-[1.08] max-w-4xl mx-auto mb-6">
+      Unleash Your Viral Potential With <span class="orange-gradient-text">Pro Video Editing</span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-zinc-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed mb-10">
+      We transform raw footage into captivating vertical content that gets seen, shared, and loved. Designed for maximum retention on Instagram Reels, TikTok, and YouTube Shorts.
+    </p>
+
+    <!-- CTA Buttons & Social Proof (No showreel button) -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+      <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-black font-display font-bold text-sm tracking-wider uppercase transition shadow-xl shadow-brand-500/30 flex items-center justify-center gap-2">
+        <span>Get in Touch</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="#work" class="w-full sm:w-auto px-8 py-4 rounded-full card-glass hover:bg-white/10 text-white font-display font-semibold text-sm transition flex items-center justify-center gap-2 border border-white/10">
+        <svg class="w-4 h-4 text-brand-400 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>Explore Vertical Edits</span>
+      </a>
+    </div>
+
+    <!-- Metrics Bar -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto pt-6 border-t border-white/10">
+      <div class="p-3">
+        <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">120M+</div>
+        <div class="text-zinc-400 text-xs mt-1">Total Views Generated</div>
+      </div>
+      <div class="p-3">
+        <div class="font-display font-extrabold text-2xl sm:text-3xl text-brand-400">85%+</div>
+        <div class="text-zinc-400 text-xs mt-1">Avg. Viewer Retention</div>
+      </div>
+      <div class="p-3">
+        <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">500+</div>
+        <div class="text-zinc-400 text-xs mt-1">Viral Cuts Delivered</div>
+      </div>
+      <div class="p-3">
+        <div class="font-display font-extrabold text-2xl sm:text-3xl text-white">24-48h</div>
+        <div class="text-zinc-400 text-xs mt-1">Rapid Turnaround</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED WORK (VERTICAL 9:16 PLAYERS) ==================== -->
+  <section id="work" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full orange-tag text-xs font-semibold uppercase tracking-wider mb-3">
+        9:16 Vertical Portfolio
+      </div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4">
+        My Recent <span class="text-brand-500">Edits</span>
+      </h2>
+      <p class="text-zinc-400 text-base leading-relaxed">
+        High-impact vertical videos crafted for TikTok, Instagram Reels, and YouTube Shorts. Optimized for 3-second hook capture and visual pacing.
+      </p>
+
+      <!-- Category Filter Tabs & Future Horizontal Ready -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+        <button class="px-5 py-2 rounded-full bg-brand-500 text-black font-semibold text-xs uppercase tracking-wide shadow-md shadow-brand-500/20">All Vertical Cuts</button>
+        <button class="px-5 py-2 rounded-full card-glass hover:bg-white/10 text-zinc-300 font-medium text-xs uppercase tracking-wide">Podcast Clips</button>
+        <button class="px-5 py-2 rounded-full card-glass hover:bg-white/10 text-zinc-300 font-medium text-xs uppercase tracking-wide">Talking Head & UGC</button>
+        <button class="px-5 py-2 rounded-full card-glass hover:bg-white/10 text-zinc-300 font-medium text-xs uppercase tracking-wide">Cinematic Lifestyle</button>
+        <span class="px-3.5 py-1.5 rounded-full border border-dashed border-white/20 text-zinc-500 text-xs">Long-Form 16:9 (Modular Slot)</span>
+      </div>
+    </div>
+
+    <!-- Vertical Video Grid: 4 Modern 9:16 Vertical Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Vertical Card 1 -->
+      <div class="card-glass rounded-3xl overflow-hidden group flex flex-col justify-between border border-white/10 hover:border-brand-500/50">
+        <!-- 9:16 Player Canvas -->
+        <div class="relative aspect-[9/16] overflow-hidden bg-dark-900 rounded-2xl m-2.5">
+          <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=1067&auto=format&fit=crop&q=80" alt="Tech Podcast Reel" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-black/40"></div>
+          
+          <!-- Top Badges -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="bg-brand-500 text-black font-display font-extrabold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full shadow-lg">
+              2.4M Views
+            </span>
+            <span class="bg-black/60 backdrop-blur-md text-white font-mono text-xs px-2.5 py-1 rounded-full border border-white/15">
+              00:48
+            </span>
+          </div>
+
+          <!-- Center Play Button with Orange Pulse -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition duration-300">
+            <div class="w-14 h-14 rounded-full bg-brand-500 text-black flex items-center justify-center shadow-2xl shadow-brand-500/60 group-hover:scale-110 active:scale-95 transition">
+              <svg class="w-6 h-6 ml-0.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+
+          <!-- Bottom HUD Overlay -->
+          <div class="absolute bottom-3 left-3 right-3">
+            <div class="flex items-center gap-1.5 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+              <span class="text-[10px] text-brand-300 uppercase font-semibold tracking-wider">Dynamic Captions · SFX</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-base leading-snug group-hover:text-brand-400 transition">
+              Tech Podcast Viral Hook & Story
+            </h3>
+          </div>
+        </div>
+
+        <!-- Card Footer Info -->
+        <div class="px-4 py-3 flex items-center justify-between text-xs text-zinc-400 border-t border-white/5">
+          <span class="text-zinc-400 font-medium">Silicon Wave Media</span>
+          <span class="text-brand-400 font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition">
+            Watch Cut →
+          </span>
+        </div>
+      </div>
+
+      <!-- Vertical Card 2 -->
+      <div class="card-glass rounded-3xl overflow-hidden group flex flex-col justify-between border border-white/10 hover:border-brand-500/50">
+        <!-- 9:16 Player Canvas -->
+        <div class="relative aspect-[9/16] overflow-hidden bg-dark-900 rounded-2xl m-2.5">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=1067&auto=format&fit=crop&q=80" alt="High-Energy Fitness Reel" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-black/40"></div>
+          
+          <!-- Top Badges -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="bg-brand-500 text-black font-display font-extrabold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full shadow-lg">
+              1.8M Views
+            </span>
+            <span class="bg-black/60 backdrop-blur-md text-white font-mono text-xs px-2.5 py-1 rounded-full border border-white/15">
+              00:32
+            </span>
+          </div>
+
+          <!-- Center Play Button with Orange Pulse -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition duration-300">
+            <div class="w-14 h-14 rounded-full bg-brand-500 text-black flex items-center justify-center shadow-2xl shadow-brand-500/60 group-hover:scale-110 active:scale-95 transition">
+              <svg class="w-6 h-6 ml-0.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+
+          <!-- Bottom HUD Overlay -->
+          <div class="absolute bottom-3 left-3 right-3">
+            <div class="flex items-center gap-1.5 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+              <span class="text-[10px] text-brand-300 uppercase font-semibold tracking-wider">Fast Pacing · Speed Ramps</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-base leading-snug group-hover:text-brand-400 transition">
+              High-Energy Brand Fitness Reel
+            </h3>
+          </div>
+        </div>
+
+        <!-- Card Footer Info -->
+        <div class="px-4 py-3 flex items-center justify-between text-xs text-zinc-400 border-t border-white/5">
+          <span class="text-zinc-400 font-medium">IronPulse Athletics</span>
+          <span class="text-brand-400 font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition">
+            Watch Cut →
+          </span>
+        </div>
+      </div>
+
+      <!-- Vertical Card 3 -->
+      <div class="card-glass rounded-3xl overflow-hidden group flex flex-col justify-between border border-white/10 hover:border-brand-500/50">
+        <!-- 9:16 Player Canvas -->
+        <div class="relative aspect-[9/16] overflow-hidden bg-dark-900 rounded-2xl m-2.5">
+          <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&h=1067&auto=format&fit=crop&q=80" alt="Tech Setup & Gaming Short" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-black/40"></div>
+          
+          <!-- Top Badges -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="bg-brand-500 text-black font-display font-extrabold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full shadow-lg">
+              3.2M Views
+            </span>
+            <span class="bg-black/60 backdrop-blur-md text-white font-mono text-xs px-2.5 py-1 rounded-full border border-white/15">
+              00:59
+            </span>
+          </div>
+
+          <!-- Center Play Button with Orange Pulse -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition duration-300">
+            <div class="w-14 h-14 rounded-full bg-brand-500 text-black flex items-center justify-center shadow-2xl shadow-brand-500/60 group-hover:scale-110 active:scale-95 transition">
+              <svg class="w-6 h-6 ml-0.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+
+          <!-- Bottom HUD Overlay -->
+          <div class="absolute bottom-3 left-3 right-3">
+            <div class="flex items-center gap-1.5 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+              <span class="text-[10px] text-brand-300 uppercase font-semibold tracking-wider">3D Motion · Kinetic Graphics</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-base leading-snug group-hover:text-brand-400 transition">
+              Next-Gen Desk Setup Review
+            </h3>
+          </div>
+        </div>
+
+        <!-- Card Footer Info -->
+        <div class="px-4 py-3 flex items-center justify-between text-xs text-zinc-400 border-t border-white/5">
+          <span class="text-zinc-400 font-medium">CyberCraft Studio</span>
+          <span class="text-brand-400 font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition">
+            Watch Cut →
+          </span>
+        </div>
+      </div>
+
+      <!-- Vertical Card 4 -->
+      <div class="card-glass rounded-3xl overflow-hidden group flex flex-col justify-between border border-white/10 hover:border-brand-500/50">
+        <!-- 9:16 Player Canvas -->
+        <div class="relative aspect-[9/16] overflow-hidden bg-dark-900 rounded-2xl m-2.5">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=1067&auto=format&fit=crop&q=80" alt="Urban Fashion TikTok" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-black/40"></div>
+          
+          <!-- Top Badges -->
+          <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+            <span class="bg-brand-500 text-black font-display font-extrabold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-full shadow-lg">
+              950K Views
+            </span>
+            <span class="bg-black/60 backdrop-blur-md text-white font-mono text-xs px-2.5 py-1 rounded-full border border-white/15">
+              00:24
+            </span>
+          </div>
+
+          <!-- Center Play Button with Orange Pulse -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 transition duration-300">
+            <div class="w-14 h-14 rounded-full bg-brand-500 text-black flex items-center justify-center shadow-2xl shadow-brand-500/60 group-hover:scale-110 active:scale-95 transition">
+              <svg class="w-6 h-6 ml-0.5 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+          </div>
+
+          <!-- Bottom HUD Overlay -->
+          <div class="absolute bottom-3 left-3 right-3">
+            <div class="flex items-center gap-1.5 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+              <span class="text-[10px] text-brand-300 uppercase font-semibold tracking-wider">Beat-Sync · Film Emulation</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-base leading-snug group-hover:text-brand-400 transition">
+              Streetwear Autumn Drop Promo
+            </h3>
+          </div>
+        </div>
+
+        <!-- Card Footer Info -->
+        <div class="px-4 py-3 flex items-center justify-between text-xs text-zinc-400 border-t border-white/5">
+          <span class="text-zinc-400 font-medium">KINETIX Apparel</span>
+          <span class="text-brand-400 font-semibold flex items-center gap-1 group-hover:translate-x-0.5 transition">
+            Watch Cut →
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== WHAT I CAN DO FOR YOU (SERVICES) ==================== -->
+  <section id="services" class="py-20 px-4 max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full orange-tag text-xs font-semibold uppercase tracking-wider mb-3">
+        Core Capabilities
+      </div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4">
+        What I Can Do <span class="text-brand-500">for You</span>
+      </h2>
+      <p class="text-zinc-400 text-base leading-relaxed">
+        Engineered specifically for short-form retention, viral hooks, and high-conversion creator storytelling.
+      </p>
+    </div>
+
+    <!-- Services Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Service 1 -->
+      <div class="card-glass rounded-2xl p-8 relative overflow-hidden group">
+        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-black transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-brand-400 transition">
+          Short Form & Vertical Video
+        </h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+          We craft bite-sized, high-impact edits perfect for capturing attention on platforms like Instagram Reels, YouTube Shorts, and TikTok. Our expertise ensures your short-form content is engaging, dynamic, and packs a punch within seconds.
+        </p>
+        <ul class="space-y-2.5 text-xs text-zinc-300">
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Dynamic animated captions with keyword highlights
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            3-second hook optimization & retention curve preservation
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            SFX soundscaping (whooshes, risers, pop cues)
+          </li>
+        </ul>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="card-glass rounded-2xl p-8 relative overflow-hidden group">
+        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-black transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-brand-400 transition">
+          Algorithm & SEO Optimization
+        </h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+          We go beyond the edit! We optimize your video titles, descriptions, and tags to increase discoverability in search results on YouTube and other platforms. This helps your ideal audience find your content more easily.
+        </p>
+        <ul class="space-y-2.5 text-xs text-zinc-300">
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            High-CTR thumbnail concepting and A/B test strategy
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Keyword-dense timestamps and chapter breakdowns
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Algorithmic metadata and cross-platform tagging
+          </li>
+        </ul>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="card-glass rounded-2xl p-8 relative overflow-hidden group">
+        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-black transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-brand-400 transition">
+          Long-Form Repurposing & Horizontal Video
+        </h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+          We transform your podcasts, interviews, and long tutorials into goldmines of vertical content, as well as high-production widescreen YouTube cuts. Seamless multi-cam switching and cinematic audio mastering.
+        </p>
+        <ul class="space-y-2.5 text-xs text-zinc-300">
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Podcasts-to-viral-shorts extraction pipeline
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Color grading in DaVinci Resolve & multi-cam syncing
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Studio-grade vocal cleanup & background music mixing
+          </li>
+        </ul>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="card-glass rounded-2xl p-8 relative overflow-hidden group">
+        <div class="w-12 h-12 rounded-xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-black transition duration-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-brand-400 transition">
+          Content Strategy & Retention Consulting
+        </h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+          Unsure where to start or need a fresh perspective? We offer personalized consultations to help you brainstorm video ideas, develop a content strategy, and optimize your approach for maximum impact on YouTube and Instagram.
+        </p>
+        <ul class="space-y-2.5 text-xs text-zinc-300">
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Channel audit and viewer retention curve analysis
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Script structure and narrative pacing frameworks
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span>
+            Production workflow setup for streamlined creator delivery
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS SECTION ==================== -->
+  <section id="skills" class="py-20 px-4 max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full orange-tag text-xs font-semibold uppercase tracking-wider mb-3">
+        Technical Mastery
+      </div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4">
+        Skills & <span class="text-brand-500">Expertise</span>
+      </h2>
+      <p class="text-zinc-400 text-base leading-relaxed">
+        Every skill is dialed in to capture viewer attention within 2 seconds and keep eyes glued until the final frame.
+      </p>
+    </div>
+
+    <!-- Skills Cloud Grid with Black & Orange Aesthetic -->
+    <div class="flex flex-wrap items-center justify-center gap-3 max-w-4xl mx-auto">
+      <div class="px-5 py-3 rounded-xl card-glass border border-brand-500/40 text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-brand-500/10">
+        <span class="text-brand-500">★</span> Retention-Driven Pacing
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> 9:16 Vertical Safe Zones
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> Kinetic Typography & Captions
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> Sound Design & SFX Cues
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> Color Grading (DaVinci Resolve)
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> 3D Motion & Graphics (After Effects)
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> YouTube Shorts & TikTok Algorithm
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> Storytelling & Viral Hooks
+      </div>
+      <div class="px-5 py-3 rounded-xl card-glass border border-white/10 hover:border-brand-500 hover:text-brand-400 font-display font-semibold text-sm transition flex items-center gap-2">
+        <span class="text-brand-500">✦</span> Rapid Turnaround (24-48h)
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FREQUENTLY ASKED QUESTIONS ==================== -->
+  <section id="faq" class="py-20 px-4 max-w-4xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full orange-tag text-xs font-semibold uppercase tracking-wider mb-3">
+        Got Questions?
+      </div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mb-4">
+        Frequently <span class="text-brand-500">Asked Questions</span>
+      </h2>
+      <p class="text-zinc-400 text-base leading-relaxed">
+        Everything you need to know about our editing workflow, turnaround times, and vertical delivery standards.
+      </p>
+    </div>
+
+    <!-- Accordion Items -->
+    <div class="space-y-4">
+      <!-- FAQ 1 -->
+      <details class="card-glass rounded-xl p-5 group open:border-brand-500/40 transition">
+        <summary class="flex items-center justify-between cursor-pointer list-none text-white font-display font-semibold text-base">
+          <span>I have raw footage or a podcast, but I'm not sure what clips will perform best. Can you help?</span>
+          <span class="w-7 h-7 rounded-full bg-white/5 group-open:bg-brand-500 group-open:text-black flex items-center justify-center text-zinc-400 transition ml-4 shrink-0">
+            +
+          </span>
+        </summary>
+        <p class="text-zinc-400 text-sm leading-relaxed mt-4 pt-3 border-t border-white/5">
+          Yes! We review your full raw footage or long-form recordings, identify the highest-retention conversational moments, punchlines, and insights, and turn them into viral-ready 9:16 vertical cuts.
+        </p>
+      </details>
+
+      <!-- FAQ 2 -->
+      <details class="card-glass rounded-xl p-5 group open:border-brand-500/40 transition">
+        <summary class="flex items-center justify-between cursor-pointer list-none text-white font-display font-semibold text-base">
+          <span>How do you optimize edits for vertical platforms (TikTok, Reels, Shorts)?</span>
+          <span class="w-7 h-7 rounded-full bg-white/5 group-open:bg-brand-500 group-open:text-black flex items-center justify-center text-zinc-400 transition ml-4 shrink-0">
+            +
+          </span>
+        </summary>
+        <p class="text-zinc-400 text-sm leading-relaxed mt-4 pt-3 border-t border-white/5">
+          Every platform has native UI overlays (like comment icons, audio bars, and account tags). We edit strictly within the 9:16 safety zones, use large centered captions, dynamic zoom cuts, and fast-paced B-roll inserts to maintain visual energy.
+        </p>
+      </details>
+
+      <!-- FAQ 3 -->
+      <details class="card-glass rounded-xl p-5 group open:border-brand-500/40 transition">
+        <summary class="flex items-center justify-between cursor-pointer list-none text-white font-display font-semibold text-base">
+          <span>Can you also handle horizontal (16:9) YouTube videos when I'm ready?</span>
+          <span class="w-7 h-7 rounded-full bg-white/5 group-open:bg-brand-500 group-open:text-black flex items-center justify-center text-zinc-400 transition ml-4 shrink-0">
+            +
+          </span>
+        </summary>
+        <p class="text-zinc-400 text-sm leading-relaxed mt-4 pt-3 border-t border-white/5">
+          Absolutely! Our production pipeline is fully modular. We can deliver both full-length widescreen (16:9) YouTube videos with in-depth chaptering and derive 5-10 vertical short cuts from the exact same master file.
+        </p>
+      </details>
+
+      <!-- FAQ 4 -->
+      <details class="card-glass rounded-xl p-5 group open:border-brand-500/40 transition">
+        <summary class="flex items-center justify-between cursor-pointer list-none text-white font-display font-semibold text-base">
+          <span>What is your typical turnaround time per cut?</span>
+          <span class="w-7 h-7 rounded-full bg-white/5 group-open:bg-brand-500 group-open:text-black flex items-center justify-center text-zinc-400 transition ml-4 shrink-0">
+            +
+          </span>
+        </summary>
+        <p class="text-zinc-400 text-sm leading-relaxed mt-4 pt-3 border-t border-white/5">
+          For short-form vertical reels, turnaround is typically 24 to 48 hours. We deliver timecoded review links via Frame.io, allowing you to leave exact timestamped feedback.
+        </p>
+      </details>
+
+      <!-- FAQ 5 -->
+      <details class="card-glass rounded-xl p-5 group open:border-brand-500/40 transition">
+        <summary class="flex items-center justify-between cursor-pointer list-none text-white font-display font-semibold text-base">
+          <span>Ready to get started? How can I contact you?</span>
+          <span class="w-7 h-7 rounded-full bg-white/5 group-open:bg-brand-500 group-open:text-black flex items-center justify-center text-zinc-400 transition ml-4 shrink-0">
+            +
+          </span>
+        </summary>
+        <p class="text-zinc-400 text-sm leading-relaxed mt-4 pt-3 border-t border-white/5">
+          Simply click "Hire me" or reach out directly at <span class="text-brand-400 font-medium">contact@videoeditor.pro</span>. We'll reply within 24 hours to review your footage and turnaround timeline.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================== CALL TO ACTION / FOOTER BANNER ==================== -->
+  <section id="contact" class="py-24 px-4 max-w-5xl mx-auto">
+    <div class="relative rounded-3xl p-10 md:p-16 card-glass border-brand-500/40 overflow-hidden text-center shadow-2xl">
+      <!-- Glow effect -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-500/20 blur-3xl pointer-events-none rounded-full"></div>
+
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full orange-tag text-xs font-semibold uppercase tracking-wider mb-6">
+        Let's Create Together
+      </div>
+
+      <h2 class="font-display font-extrabold text-3xl sm:text-5xl md:text-6xl text-white tracking-tight max-w-3xl mx-auto mb-6">
+        Bringing Stories to Life with <span class="text-brand-500">Cinematic Precision</span>
+      </h2>
+
+      <p class="text-zinc-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+        Ready to scale your vertical content, skyrocket retention, and unlock your viral potential? Let's talk!
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto mb-12">
+        <input type="email" placeholder="Enter your email address..." class="w-full px-5 py-4 rounded-full bg-dark-900 border border-white/10 text-white placeholder-zinc-500 text-sm focus:outline-none focus:border-brand-500 transition">
+        <button class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-black font-display font-bold text-sm tracking-wider uppercase transition shadow-lg shadow-brand-500/30 whitespace-nowrap">
+          Let's Talk
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-zinc-400">
+        <a href="mailto:contact@videoeditor.pro" class="hover:text-brand-400 transition flex items-center gap-2">
+          <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          contact@videoeditor.pro
+        </a>
+        <span>·</span>
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          Accepting New Projects
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-12 border-t border-white/5 px-4 max-w-5xl mx-auto text-xs text-zinc-500">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-full bg-brand-500 flex items-center justify-center text-black font-display font-bold text-xs">
+          ▶
+        </div>
+        <span class="font-display font-semibold text-white text-sm">Video Editor Portfolio</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-zinc-400">
+        <a href="#work" class="hover:text-brand-400 transition">Work</a>
+        <a href="#services" class="hover:text-brand-400 transition">Services</a>
+        <a href="#skills" class="hover:text-brand-400 transition">Skills</a>
+        <a href="#faq" class="hover:text-brand-400 transition">FAQ</a>
+      </div>
+
+      <div>
+        © 2026. All rights reserved. Designed for High-Retention Vertical Video.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
